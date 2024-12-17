@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap');
+
+:root {
+    --background-gradient-start: #7e4b3c;
+    --background-gradient-middle: #a67c52;
+    --background-gradient-end: #d19d61;
+    --text-color: #3a2c29;
+    --cell-background: #f5d4a0;
+    --cell-hover-background: #c6a366;
+    --cell-text-color: #5a3c29;
+    --reset-button-color: #5a3c29;
+    --reset-button-hover: #3a2c29;
+    --winner-message-color: #e9c68c;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background-gradient-start), var(--background-gradient-middle), var(--background-gradient-end));
+    color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    letter-spacing: 1px;
+    font-family: 'Playfair Display', serif;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 330px;
+    margin: 0 auto 20px;
+    padding: 10px;
+    border: 15px solid #a67c52;
+    border-radius: 10px;
+    background: var(--background-gradient-end);
+}
+
+.cell {
+    background-color: var(--cell-background);
+    color: var(--cell-text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    height: 100px;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 5px 10px var(--shadow-color);
+    border-radius: 8px;
+}
+
+.cell:hover {
+    background-color: var(--cell-hover-background);
+    transform: scale(1.05);
+}
+
+.cell.taken {
+    cursor: not-allowed;
+}
+
+#winner-message {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--winner-message-color);
+    text-align: center;
+    opacity: 1;
+    transform: scale(1);
+}
+
+#winner-message.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#reset-button {
+    background-color: var(--reset-button-color);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#reset-button:hover {
+    background-color: var(--reset-button-hover);
+    transform: scale(1.1);
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999;
+}
